@@ -67,6 +67,7 @@ export const defaultProps = (props) => {
                 onUnAssignedEventCreate: () => { },
                 onEventDrop: () => { },
                 onEventDragOver: () => { },
+                onCellClick: () => { },
                 onDelete: undefined,
                 viewerExtraComponent: undefined,
                 resources: [],
@@ -99,4 +100,5 @@ export const initialStore = {
     confirmEvent: () => { },
     onDrop: () => { },
     onEventUpdate: () => { },
+    onCellClick: () => { },
 };

@@ -1,15 +1,17 @@
-import { useState } from "react";
-import reactLogo from "./assets/react.svg";
-import viteLogo from "/vite.svg";
-import "./App.css";
 import { Scheduler } from "./lib";
 import { EVENTS, RESOURCES } from "./data";
+import FormModle from "./component/FormModle.jsx/FormModle";
+import { useState } from "react";
+import { LocalizationProvider } from "@mui/x-date-pickers";
+import { AdapterMoment } from "@mui/x-date-pickers/AdapterMoment";
 
 function App() {
+  const [openModle, setOpenModle] = useState(false);
+  const [events, setEvents] = useState([]);
   return (
-    <>
+    <LocalizationProvider dateAdapter={AdapterMoment}>
       <Scheduler
-        events={EVENTS}
+        events={events}
         resources={RESOURCES}
         resourceFields={{
           idField: "admin_id",
@@ -18,8 +20,16 @@ function App() {
           colorField: "color",
           subTextField: "subTxt",
         }}
+        onCellClick={(data) => setOpenModle(data)}
       />
-    </>
+
+      <FormModle
+        open={Boolean(openModle)}
+        handleClose={() => setOpenModle(!openModle)}
+        data={openModle}
+        onEventCreate={(data) => setEvents([...events, data])}
+      />
+    </LocalizationProvider>
   );
 }
 

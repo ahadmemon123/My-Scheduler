@@ -11,6 +11,7 @@ const CellWarpper = ({ children,styles ,...rest }) => {
                 minWidth:"50px",
                 ...styles
             }}
+            item
             {...rest}
         >{children}</Grid>
     )
